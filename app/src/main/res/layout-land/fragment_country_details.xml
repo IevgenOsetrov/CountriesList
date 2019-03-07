@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFlag"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".screens.main.MainActivity" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView2"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/region"
+        app:layout_constraintEnd_toStartOf="@+id/textView1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="Region" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView1"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/capital"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/ivFlag"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCapital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView1"
+        app:layout_constraintStart_toStartOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        tools:text="Capital" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        style="@style/BoldStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivFlag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView6"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/area"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/ivFlag"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:text="Area" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView8"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/population"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPopulation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:text="Population" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/languages"
+        app:layout_constraintStart_toStartOf="@+id/tvRegion"
+        app:layout_constraintTop_toBottomOf="@+id/ivFlag" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLanguages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        tools:text="Languages" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView4"
+        style="@style/BoldStyleLand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currency"
+        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvLanguages" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCurrency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        tools:text="Currency" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

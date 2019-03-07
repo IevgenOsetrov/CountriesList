@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CountriesList</string>
+    <string name="google_maps_key">AIzaSyCa_sr5ePpBoqN0Le0d-E9KMmv88Yza3SU</string>
+    <string name="error_check_internet_connection">Check Internet connection</string>
+    <string name="countries">Countries</string>
+    <string name="details">Details</string>
+    <string name="press_back_more">Please, press back once more to exit</string>
+    <string name="population">Population</string>
+    <string name="area">Area</string>
+    <string name="capital">Capital</string>
+    <string name="region">Region</string>
+    <string name="languages">Languages:</string>
+    <string name="currency">Currency:</string>
+</resources>
