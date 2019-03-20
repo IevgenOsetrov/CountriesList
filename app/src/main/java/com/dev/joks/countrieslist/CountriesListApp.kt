@@ -1,7 +1,9 @@
 package com.dev.joks.countrieslist
 
 import android.app.Application
-import com.dev.joks.countrieslist.service.AppApi
+import com.dev.joks.countrieslist.di.networkModule
+import com.dev.joks.countrieslist.di.viewModelModule
+import org.koin.standalone.StandAloneContext.startKoin
 
 class CountriesListApp : Application() {
 
@@ -13,6 +15,6 @@ class CountriesListApp : Application() {
         super.onCreate()
 
         instance = this
-        AppApi.init()
+        startKoin(listOf(networkModule, viewModelModule))
     }
 }

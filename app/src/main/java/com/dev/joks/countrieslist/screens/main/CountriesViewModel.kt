@@ -3,12 +3,12 @@ package com.dev.joks.countrieslist.screens.main
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.dev.joks.countrieslist.screens.base.BaseViewModel
-import com.dev.joks.countrieslist.service.AppApi.apiService
+import com.dev.joks.countrieslist.service.ApiService
 import com.dev.joks.countrieslist.service.model.Country
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class CountriesViewModel : BaseViewModel() {
+class CountriesViewModel(private val apiService: ApiService) : BaseViewModel() {
 
     val response: MutableLiveData<List<Country>> = MutableLiveData()
 

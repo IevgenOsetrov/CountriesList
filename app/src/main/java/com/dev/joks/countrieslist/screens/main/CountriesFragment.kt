@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.joks.countrieslist.R
@@ -20,6 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_countries.*
 import org.jetbrains.anko.support.v4.toast
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CountriesFragment : BaseFragment() {
 
@@ -27,15 +27,13 @@ class CountriesFragment : BaseFragment() {
 
     private lateinit var countriesBinding: FragmentCountriesBinding
     private lateinit var countriesAdapter: CountriesAdapter
-    private lateinit var countriesViewModel: CountriesViewModel
-
+    val countriesViewModel: CountriesViewModel by viewModel()
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         retainInstance = true
-        countriesViewModel = ViewModelProviders.of(this).get(CountriesViewModel::class.java)
 
         ReactiveNetwork.observeNetworkConnectivity(activity)
             .subscribeOn(Schedulers.io())
