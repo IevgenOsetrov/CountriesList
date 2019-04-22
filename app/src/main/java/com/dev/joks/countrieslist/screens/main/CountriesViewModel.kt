@@ -1,34 +1,30 @@
 package com.dev.joks.countrieslist.screens.main
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.dev.joks.countrieslist.repository.Repository
 import com.dev.joks.countrieslist.screens.base.BaseViewModel
-import com.dev.joks.countrieslist.service.ApiService
 import com.dev.joks.countrieslist.service.model.Country
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.dev.joks.countrieslist.utils.TAG
+import kotlinx.coroutines.launch
 
-class CountriesViewModel(private val apiService: ApiService) : BaseViewModel() {
+class CountriesViewModel(private val repository: Repository) : BaseViewModel() {
 
     val response: MutableLiveData<List<Country>> = MutableLiveData()
 
     fun getCountries() {
-        getCompositeDisposable().add(apiService.getCountries()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { onGetCountriesStart() }
-            .subscribe(
-                { response -> onGetCountriesSuccess(response) },
-                { error -> showError(error) }
-            ))
-    }
-
-    private fun onGetCountriesStart() {
-        progressVisibility.value = View.VISIBLE
-    }
-
-    private fun onGetCountriesSuccess(data: List<Country>) {
-        progressVisibility.value = View.GONE
-        response.value = data
+        viewModelScope.launch {
+            try {
+                progressVisibility.value = View.VISIBLE
+                val countries = repository.getCountries().await()
+                response.value = countries
+                progressVisibility.value = View.GONE
+            } catch (ex: Exception) {
+                Log.e(TAG, ex.message)
+                progressVisibility.value = View.GONE
+            }
+        }
     }
 }

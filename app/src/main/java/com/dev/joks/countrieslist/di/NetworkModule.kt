@@ -1,14 +1,17 @@
 package com.dev.joks.countrieslist.di
 
+import android.content.Context
 import com.dev.joks.countrieslist.BuildConfig
-import com.dev.joks.countrieslist.CountriesListApp
+import com.dev.joks.countrieslist.repository.Repository
+import com.dev.joks.countrieslist.repository.RepositoryImpl
 import com.dev.joks.countrieslist.service.ApiService
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.*
@@ -20,14 +23,15 @@ private const val READ_TIMEOUT = 60L
 
 val networkModule = module {
 
-    single { provideOkHttpClient() }
+    single { provideOkHttpClient(androidApplication()) }
     single { provideRetrofit(get()) }
     single { provideApiService(get()) }
+    single { RepositoryImpl(get()) as Repository }
 }
 
-private fun provideOkHttpClient() =
+private fun provideOkHttpClient(context: Context) =
     OkHttpClient.Builder()
-        .cache(Cache(File(CountriesListApp.instance.cacheDir, "http"), CACHE_SIZE))
+        .cache(Cache(File(context.cacheDir, "http"), CACHE_SIZE))
         .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
         .addInterceptor {
@@ -52,7 +56,7 @@ private fun provideRetrofit(client: OkHttpClient) =
     Retrofit.Builder()
         .client(client)
         .baseUrl(BuildConfig.BASE_URL)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

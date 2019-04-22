@@ -1,11 +1,8 @@
-package com.dev.joks.countrieslist.service
+package com.dev.joks.countrieslist.repository
 
 import com.dev.joks.countrieslist.service.model.Country
 import kotlinx.coroutines.Deferred
-import retrofit2.http.GET
 
-interface ApiService {
-
-    @GET("all")
+interface Repository {
     fun getCountries(): Deferred<List<Country>>
 }
